@@ -51,37 +51,39 @@ end
 
 def quickest_method
 	arr = []
-	hash = {@while_time => "while loop", 
-			@rec_time => "recursion method", 
-			@downto_time => "downto iteration"}
+
+	time_a = Time.now
+	beer_song_1
+	time_b = Time.now
+	while_time = (time_b - time_a).to_f
+	puts "_" * 5
+	puts "This while loop took #{while_time} seconds"
+	puts "_" * 5
+
+	time_c = Time.now
+	beer_song_2(99)
+	time_d = Time.now
+	rec_time = (time_d - time_c).to_f
+	puts "_" * 5
+	puts "This recursion method took #{rec_time} seconds"
+	puts "_" * 5
+
+	time_e = Time.now
+	beer_song_3
+	time_f = Time.now
+	downto_time = (time_f - time_e).to_f
+	puts "_" * 5
+	puts "This downto iteration took #{downto_time} seconds"
+	puts "_" * 5
+
+	hash = {while_time => "while loop", 
+			rec_time => "recursion method", 
+			downto_time => "downto iteration"}
+
 	hash.each do |k,v|
 	arr << k
 	end
 	puts "The quickest method was the #{((hash.values_at(arr.max)).to_s).delete('["]')}."
 end
-
-time_a = Time.now
-beer_song_1
-time_b = Time.now
-@while_time = (time_b - time_a).to_f
-puts "_" * 5
-puts "This while loop took #{@while_time} seconds"
-puts "_" * 5
-
-time_c = Time.now
-beer_song_2(99)
-time_d = Time.now
-@rec_time = (time_d - time_c).to_f
-puts "_" * 5
-puts "This recursion method took #{@rec_time} seconds"
-puts "_" * 5
-
-time_e = Time.now
-beer_song_3
-time_f = Time.now
-@downto_time = (time_f - time_e).to_f
-puts "_" * 5
-puts "This downto iteration took #{@downto_time} seconds"
-puts "_" * 5
 
 quickest_method
